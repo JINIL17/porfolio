@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeniel Sabalboro — Full Stack Software Engineer</title>
+  <meta name="description" content="Portfolio of Jeniel Sabalboro, a Full Stack Software Engineer specializing in scalable web systems, dashboards, and production-grade platforms." />
+  <meta name="keywords" content="software engineer, full stack developer, portfolio, web developer, backend, frontend" />
+  <meta name="author" content="Jeniel Sabalboro" />
+  <meta name="theme-color" content="#0a0e17" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://jenielsabalboro.dev/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jeniel Sabalboro — Full Stack Software Engineer" />
+  <meta property="og:description" content="Building resilient, elegant systems from database to browser." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%2322d3ee%22>&lt;/&gt;</text></svg>" />
+
+  <!-- Fonts: Sora (display), Inter (body), JetBrains Mono (data/labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" />
+
+  <!-- Project Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <!-- Structured data — helps search engines show a rich Person/Website result -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jeniel Sabalboro",
+    "jobTitle": "Full Stack Software Engineer",
+    "url": "https://jenielsabalboro.dev/",
+    "image": "https://jenielsabalboro.dev/assets/images/jeniel.png",
+    "sameAs": [
+      "https://github.com/JINIL17",
+      "https://linkedin.com/in/jenielsabalboro",
+      "https://facebook.com/jenielsabalboro.dev"
+    ],
+    "knowsAbout": ["PHP", "MySQL", "JavaScript", "Django", "Full Stack Development", "IoT"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sta. Rosa, Laguna",
+      "addressCountry": "PH"
+    }
+  }
+  </script>
+
+</head>
+<body>
+
+  <!-- ============ SKIP LINK (accessibility) ============
+       Hidden until focused via keyboard (Tab), lets keyboard/screen-reader
+       users jump past the nav straight to the main content. -->
+  <a href="#top" class="skip-link">Skip to main content</a>
+
+  <!-- ============ LOADING SCREEN ============ -->
+  <div id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <span class="loader-bracket">&lt;</span>
+      <span class="loader-text">JS</span>
+      <span class="loader-bracket">/&gt;</span>
+      <div class="loader-bar"><span></span></div>
+      <p class="loader-status" id="loaderStatus">booting system<span class="dots">...</span></p>
+    </div>
+  </div>
+
+  <!-- ============ SCROLL PROGRESS ============ -->
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgressBar"></span></div>
+
+  <!-- ============ CUSTOM CURSOR ============ -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- ============ TOAST CONTAINER ============ -->
+  <div class="toast-container position-fixed top-0 end-0 p-3" id="toastContainer" style="z-index: 1200;"></div>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav class="navbar navbar-expand-lg fixed-top custom-navbar" id="mainNav" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand" href="#hero">
+        <span class="brand-mark">JS</span><span class="brand-cursor">_</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="toggler-line"></span>
+        <span class="toggler-line"></span>
+        <span class="toggler-line"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="#about" data-nav="about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#stack" data-nav="stack">Stack</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects" data-nav="projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience" data-nav="experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education" data-nav="education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact" data-nav="contact">Contact</a></li>
+          <li class="nav-item ms-lg-2">
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark theme" aria-pressed="false">
+              <i class="fa-solid fa-moon" aria-hidden="true"></i>
+              <i class="fa-solid fa-sun" aria-hidden="true"></i>
+              <span class="theme-toggle-thumb"></span>
+            </button>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <a href="resume/resume.pdf" download class="btn btn-console btn-sm">
+              <i class="fa-solid fa-arrow-down-to-line me-1" aria-hidden="true"></i> Resume
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top" class="site-main">
+    <!-- ============ HERO SECTION ============ -->
+    <section id="hero" class="hero-section" aria-label="Introduction">
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <canvas id="particlesCanvas" aria-hidden="true"></canvas>
+      <div class="container position-relative">
+        <div class="row align-items-center gy-5">
+          <div class="col-lg-7">
+            <p class="eyebrow" data-aos="fade-up">
+              <span class="status-dot" aria-hidden="true"></span> SYSTEM STATUS: OPEN TO WORK
+            </p>
+            <h1 class="hero-name" data-aos="fade-up" data-aos-delay="80">
+              Jeniel Sabalboro
+            </h1>
+            <h2 class="hero-role" data-aos="fade-up" data-aos-delay="140">
+              Software Engineer <span class="role-divider">|</span> Full Stack Developer
+            </h2>
+            <p class="hero-typed-line" data-aos="fade-up" data-aos-delay="180">
+              <span class="prompt-symbol">&gt;</span>
+              <span id="typedSkills" class="typed-target"></span><span class="typed-caret">|</span>
+            </p>
+            <p class="hero-summary" data-aos="fade-up" data-aos-delay="220">
+              I design and ship full-stack platforms that hold up under real operational load —
+              from booking engines to PMS/RMS to live monitoring dashboards.
+            </p>
+            <div class="hero-cta d-flex flex-wrap gap-3" data-aos="fade-up" data-aos-delay="280">
+              <a href="#projects" class="btn btn-glow">View My Work <i class="fa-solid fa-arrow-right ms-2" aria-hidden="true"></i></a>
+              <a href="#contact" class="btn btn-outline-console">Get In Touch</a>
+            </div>
+            <ul class="social-row list-unstyled d-flex gap-3 mt-4" data-aos="fade-up" data-aos-delay="320">
+              <li><a href="https://github.com/JINIL17" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
+              <li><a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
+              <li><a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+              <li><a href="mailto:sabalborojeniel427@gmail.com" aria-label="Send an email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-5">
+            <!-- Signature element: live "system console" card.
+                 Outer div is what GSAP animates for entrance + ambient float;
+                 inner .console-card is what the mouse-tilt effect rotates.
+                 Splitting these avoids both scripts fighting over the same
+                 element's transform on every frame. -->
+            <div class="console-outer" data-aos="zoom-in" data-aos-delay="200" id="consoleCard">
+              <div class="console-card tilt-card">
+                <div class="console-card-glow" aria-hidden="true"></div>
+                <div class="console-header">
+                  <span class="console-dot red"></span><span class="console-dot yellow"></span><span class="console-dot green"></span>
+                  <span class="console-title">status.sh</span>
+                </div>
+                <div class="console-body">
+                  <div class="avatar-frame">
+                    <img src="assets/images/jeniel.png" alt="Portrait of Jeniel Sabalboro" loading="lazy" width="140" height="140" />
+                    <span class="avatar-ring" aria-hidden="true"></span>
+                  </div>
+                  <div class="console-metrics">
+                    <div class="metric">
+                      <span class="metric-value counter" data-target="6">0</span><span class="metric-suffix">+</span>
+                      <span class="metric-label">Years Experience</span>
+                    </div>
+                    <div class="metric">
+                      <span class="metric-value counter" data-target="42">0</span>
+                      <span class="metric-label">Projects Shipped</span>
+                    </div>
+                    <div class="metric">
+                      <span class="metric-value counter" data-target="99">0</span><span class="metric-suffix">%</span>
+                      <span class="metric-label">Uptime Delivered</span>
+                    </div>
+                  </div>
+                  <div class="uptime-bar" aria-hidden="true"><span></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
+        <span class="scroll-cue-line"></span> Scroll
+      </a>
+    </section>
+
+    <!-- ============ ABOUT SECTION ============ -->
+    <section id="about" class="section-pad" aria-label="About me">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">01 / About</p>
+        <h2 class="section-title" data-aos="fade-up">The engineer behind the code</h2>
+
+        <div class="row gy-5 align-items-center mt-4">
+          <div class="col-lg-5" data-aos="fade-right">
+            <div class="about-photo-frame">
+              <img src="assets/images/jeniel.png" alt="Jeniel Sabalboro working at a desk with dual monitors" loading="lazy" width="480" height="560" class="img-fluid rounded" />
+              <div class="about-photo-tag">
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Based in Sta. Rosa, Laguna, PH
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7" data-aos="fade-left">
+            <p class="about-lead">
+              I'm a full-stack developer who enjoys the unglamorous parts of software the most: making
+              a booking engine survive a holiday rush, untangling a foreign-key constraint at 1 a.m.,
+              or shaving three seconds off a report that finance actually opens every day.
+            </p>
+            <p class="about-body">
+              Over the past six years I've built and maintained production systems across hospitality,
+              point-of-sale, and industrial maintenance — PHP MVC architectures, MySQL/MariaDB schemas,
+              and interactive dashboards used by real staff, every day, under real pressure. I care about
+              readable code, honest error messages, and interfaces that don't make people think.
+            </p>
+
+            <div class="row g-3 fun-facts-grid">
+              <div class="col-6 col-md-3">
+                <div class="fun-fact-card">
+                  <i class="fa-solid fa-mug-hot" aria-hidden="true"></i>
+                  <span>Fueled by black coffee</span>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="fun-fact-card">
+                  <i class="fa-solid fa-bug" aria-hidden="true"></i>
+                  <span>Debugs for fun</span>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="fun-fact-card">
+                  <i class="fa-solid fa-keyboard" aria-hidden="true"></i>
+                  <span>Mechanical keyboard nerd</span>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="fun-fact-card">
+                  <i class="fa-solid fa-chess-knight" aria-hidden="true"></i>
+                  <span>Plays chess badly</span>
+                </div>
+              </div>
+            </div>
+
+            <a href="resume/resume.pdf" download class="btn btn-glow mt-4">
+              <i class="fa-solid fa-file-arrow-down me-2" aria-hidden="true"></i> Download CV
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TECH STACK SECTION ============ -->
+    <section id="stack" class="section-pad section-alt" aria-label="Technical skills">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">02 / Stack</p>
+        <h2 class="section-title" data-aos="fade-up">Tools I reach for</h2>
+        <p class="section-subtitle" data-aos="fade-up">A working toolkit, not a buzzword list — everything here ships in production.</p>
+
+        <div class="stack-tabs d-flex flex-wrap gap-2 mt-4" role="tablist" aria-label="Skill categories" data-aos="fade-up">
+          <button class="stack-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="stack-tab" data-filter="frontend" role="tab" aria-selected="false">Frontend</button>
+          <button class="stack-tab" data-filter="backend" role="tab" aria-selected="false">Backend</button>
+          <button class="stack-tab" data-filter="database" role="tab" aria-selected="false">Database</button>
+          <button class="stack-tab" data-filter="language" role="tab" aria-selected="false">Languages</button>
+          <button class="stack-tab" data-filter="tools" role="tab" aria-selected="false">Tools</button>
+          <button class="stack-tab" data-filter="cloud" role="tab" aria-selected="false">Cloud</button>
+        </div>
+
+        <div class="row g-4 mt-2" id="skillGrid">
+          <!-- Frontend -->
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="frontend" data-aos="zoom-in">
+            <div class="skill-card">
+              <i class="fa-brands fa-html5 skill-icon" style="color:#e34f26" aria-hidden="true"></i>
+              <h3>HTML5</h3>
+              <div class="skill-bar"><span style="--pct:95%"></span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="frontend" data-aos="zoom-in" data-aos-delay="40">
+            <div class="skill-card">
+              <i class="fa-brands fa-css3-alt skill-icon" style="color:#2965f1" aria-hidden="true"></i>
+              <h3>CSS3</h3>
+              <div class="skill-bar"><span style="--pct:92%"></span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="frontend" data-aos="zoom-in" data-aos-delay="80">
+            <div class="skill-card">
+              <i class="fa-brands fa-js skill-icon" style="color:#f7df1e" aria-hidden="true"></i>
+              <h3>JavaScript</h3>
+              <div class="skill-bar"><span style="--pct:88%"></span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="frontend" data-aos="zoom-in" data-aos-delay="120">
+            <div class="skill-card">
+              <i class="fa-brands fa-bootstrap skill-icon" style="color:#7952b3" aria-hidden="true"></i>
+              <h3>Bootstrap 5</h3>
+              <div class="skill-bar"><span style="--pct:90%"></span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="frontend" data-aos="zoom-in">
+            <div class="skill-card">
+              <i class="fa-brands fa-react skill-icon" style="color:#61dafb" aria-hidden="true"></i>
+              <h3>React</h3>
+              <div class="skill-bar"><span style="--pct:78%"></span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="frontend" data-aos="zoom-in" data-aos-delay="40">
+            <div class="skill-card">
+              <i class="fa-solid fa-table-list skill-icon" style="color:#22d3ee" aria-hidden="true"></i>
+              <h3>jQuery / DataTables</h3>
+              <div class="skill-bar"><span style="--pct:90%"></span></div>
+            </div>
+          </div>
+
+          <!-- Backend -->
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="backend" data-aos="zoom-in">
+            <div class="skill-card">
+              <i class="fa-brands fa-php skill-icon" style="color:#777bb4" aria-hidden="true"></i>
+              <h3>PHP (MVC)</h3>
+              <div class="skill-bar"><span style="--pct:93%"></span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="backend" data-aos="zoom-in" data-aos-delay="40">
+            <div class="skill-card">
+              <i class="fa-brands fa-node-js skill-icon" style="color:#3c873a" aria-hidden="true"></i>
+              <h3>Node.js</h3>
+              <div class="skill-bar"><span style="--pct:75%"></span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="backend" data-aos="zoom-in" data-aos-delay="80">
+            <div class="skill-card">
+              <i class="fa-solid fa-plug skill-icon" style="color:#7c5cff" aria-hidden="true"></i>
+              <h3>REST APIs</h3>
+              <div class="skill-bar"><span style="--pct:88%"></span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="backend" data-aos="zoom-in" data-aos-delay="120">
+            <div class="skill-card">
+              <i class="fa-brands fa-python skill-icon" style="color:#44b78b" aria-hidden="true"></i>
+              <h3>Django</h3>
+              <div class="skill-bar"><span style="--pct:70%"></span></div>
+            </div>
+          </div>
+
+          <!-- Database -->
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="database" data-aos="zoom-in">
+            <div class="skill-card">
+              <i class="fa-solid fa-database skill-icon" style="color:#00758f" aria-hidden="true"></i>
+              <h3>MySQL / MariaDB</h3>
+              <div class="skill-bar"><span style="--pct:91%"></span></div>
+            </div>
+          </div>
+
+          <!-- Languages -->
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="language" data-aos="zoom-in">
+            <div class="skill-card">
+              <i class="fa-brands fa-python skill-icon" style="color:#ffd43b" aria-hidden="true"></i>
+              <h3>Python</h3>
+              <div class="skill-bar"><span style="--pct:72%"></span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="language" data-aos="zoom-in" data-aos-delay="40">
+            <div class="skill-card">
+              <i class="fa-brands fa-java skill-icon" style="color:#e76f00" aria-hidden="true"></i>
+              <h3>Java</h3>
+              <div class="skill-bar"><span style="--pct:60%"></span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="language" data-aos="zoom-in" data-aos-delay="80">
+            <div class="skill-card">
+              <i class="fa-solid fa-c skill-icon" style="color:#00599c" aria-hidden="true"></i>
+              <h3>C++</h3>
+              <div class="skill-bar"><span style="--pct:64%"></span></div>
+            </div>
+          </div>
+
+          <!-- Tools -->
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="tools" data-aos="zoom-in">
+            <div class="skill-card">
+              <i class="fa-brands fa-git-alt skill-icon" style="color:#f05032" aria-hidden="true"></i>
+              <h3>Git & GitHub</h3>
+              <div class="skill-bar"><span style="--pct:90%"></span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="tools" data-aos="zoom-in" data-aos-delay="40">
+            <div class="skill-card">
+              <i class="fa-solid fa-server skill-icon" style="color:#f97316" aria-hidden="true"></i>
+              <h3>XAMPP</h3>
+              <div class="skill-bar"><span style="--pct:88%"></span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="tools" data-aos="zoom-in">
+            <div class="skill-card">
+              <i class="fa-solid fa-laptop-code skill-icon" style="color:#007acc" aria-hidden="true"></i>
+              <h3>VS Code</h3>
+              <div class="skill-bar"><span style="--pct:95%"></span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="tools" data-aos="zoom-in" data-aos-delay="40">
+            <div class="skill-card">
+              <i class="fa-solid fa-file-code skill-icon" style="color:#ff9800" aria-hidden="true"></i>
+              <h3>Sublime Text</h3>
+              <div class="skill-bar"><span style="--pct:80%"></span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="tools" data-aos="zoom-in" data-aos-delay="80">
+            <div class="skill-card">
+              <i class="fa-solid fa-microchip skill-icon" style="color:#00979d" aria-hidden="true"></i>
+              <h3>Arduino IDE</h3>
+              <div class="skill-bar"><span style="--pct:58%"></span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="tools" data-aos="zoom-in" data-aos-delay="120">
+            <div class="skill-card">
+              <i class="fa-brands fa-raspberry-pi skill-icon" style="color:#c51a4a" aria-hidden="true"></i>
+              <h3>Raspberry Pi</h3>
+              <div class="skill-bar"><span style="--pct:55%"></span></div>
+            </div>
+          </div>
+
+          <!-- Cloud -->
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-cat="cloud" data-aos="zoom-in" data-aos-delay="40">
+            <div class="skill-card">
+              <i class="fa-brands fa-docker skill-icon" style="color:#2496ed" aria-hidden="true"></i>
+              <h3>Docker</h3>
+              <div class="skill-bar"><span style="--pct:66%"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills Radar Chart -->
+        <div class="row mt-5">
+          <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
+            <h3 class="radar-title">Core Competency Radar</h3>
+            <canvas id="radarChart" width="480" height="420" role="img" aria-label="Radar chart showing proficiency across core competencies"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS SECTION ============ -->
+    <section id="projects" class="section-pad" aria-label="Projects">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">03 / Projects</p>
+        <h2 class="section-title" data-aos="fade-up">Systems I've shipped</h2>
+        <p class="section-subtitle" data-aos="fade-up">Selected work — filter by category or search by name.</p>
+
+        <div class="d-flex flex-wrap gap-3 justify-content-between align-items-center mt-4" data-aos="fade-up">
+          <div class="project-filters d-flex flex-wrap gap-2">
+            <button class="stack-tab active" data-project-filter="all">All</button>
+            <button class="stack-tab" data-project-filter="web">Web Apps</button>
+            <button class="stack-tab" data-project-filter="dashboard">Dashboards</button>
+            <button class="stack-tab" data-project-filter="pos">POS Systems</button>
+          </div>
+          <div class="project-search">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input type="search" id="projectSearch" placeholder="Search projects..." aria-label="Search projects" />
+          </div>
+        </div>
+
+        <div class="row g-4 mt-2" id="projectGrid">
+          <div class="col-md-6 col-lg-4 project-item" data-cat="web" data-name="laruzzo resort management system" data-aos="fade-up">
+            <div class="project-card-flip" tabindex="0" role="button" aria-label="Laruzzo Resort Management System — flip for details">
+              <div class="project-card-inner">
+                <article class="project-card-front">
+                  <div class="project-thumb">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=60" alt="Dashboard screenshot of the Laruzzo Resort Management System" loading="lazy" />
+                  </div>
+                  <div class="project-front-body">
+                    <h3>Laruzzo Resort Management System</h3>
+                    <span class="flip-hint"><i class="fa-solid fa-rotate" aria-hidden="true"></i> Tap to flip</span>
+                  </div>
+                </article>
+                <article class="project-card-back">
+                  <h3>Laruzzo Resort Management System</h3>
+                  <p>Full-stack hospitality platform handling bookings, POS, commissary inventory, and operational reporting for a multi-branch resort.</p>
+                  <div class="project-tags">
+                    <span>PHP MVC</span><span>MySQL</span><span>Bootstrap 5</span><span>DataTables</span><span>pdfMake</span>
+                  </div>
+                  <div class="project-back-links">
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live</a>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 project-item" data-cat="pos" data-name="laruzzo pos" data-aos="fade-up" data-aos-delay="60">
+            <div class="project-card-flip" tabindex="0" role="button" aria-label="Laruzzo POS and Kitchen Display — flip for details">
+              <div class="project-card-inner">
+                <article class="project-card-front">
+                  <div class="project-thumb">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=60" alt="Point of sale interface screenshot" loading="lazy" />
+                  </div>
+                  <div class="project-front-body">
+                    <h3>Laruzzo POS & Kitchen Display</h3>
+                    <span class="flip-hint"><i class="fa-solid fa-rotate" aria-hidden="true"></i> Tap to flip</span>
+                  </div>
+                </article>
+                <article class="project-card-back">
+                  <h3>Laruzzo POS & Kitchen Display</h3>
+                  <p>Real-time point-of-sale with a live Kitchen Display System, cashier session tracking, and same-second dashboard sales sync.</p>
+                  <div class="project-tags">
+                    <span>PHP</span><span>MySQLi</span><span>Vanilla JS</span><span>AJAX Polling</span>
+                  </div>
+                  <div class="project-back-links">
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live</a>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 project-item" data-cat="dashboard" data-name="automated biogas monitoring system" data-aos="fade-up" data-aos-delay="120">
+            <div class="project-card-flip" tabindex="0" role="button" aria-label="Automated Biogas Monitoring System — flip for details">
+              <div class="project-card-inner">
+                <article class="project-card-front">
+                  <div class="project-thumb">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=60" alt="Biogas monitoring dashboard with methane and temperature readouts" loading="lazy" />
+                  </div>
+                  <div class="project-front-body">
+                    <h3>Automated Biogas Monitoring System</h3>
+                    <span class="flip-hint"><i class="fa-solid fa-rotate" aria-hidden="true"></i> Tap to flip</span>
+                  </div>
+                </article>
+                <article class="project-card-back">
+                  <h3>Automated Biogas Monitoring System</h3>
+                  <p>IoT-based monitoring of methane, temperature, pH, and moisture for CSTR and Airlift digesters. Includes data logging, dashboard visualization, and LSTM prediction.</p>
+                  <div class="project-tags">
+                    <span>Raspberry Pi</span><span>ESP32</span><span>IoT</span><span>Python</span><span>LSTM</span>
+                  </div>
+                  <div class="project-back-links">
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live</a>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 project-item" data-cat="dashboard" data-name="acm pulse monitor" data-aos="fade-up">
+            <div class="project-card-flip" tabindex="0" role="button" aria-label="ACM Pulse Monitoring System — flip for details">
+              <div class="project-card-inner">
+                <article class="project-card-front">
+                  <div class="project-thumb">
+                    <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=800&q=60" alt="Industrial machine monitoring dashboard screenshot" loading="lazy" />
+                  </div>
+                  <div class="project-front-body">
+                    <h3>ACM Pulse Monitoring System</h3>
+                    <span class="flip-hint"><i class="fa-solid fa-rotate" aria-hidden="true"></i> Tap to flip</span>
+                  </div>
+                </article>
+                <article class="project-card-back">
+                  <h3>ACM Pulse Monitoring System</h3>
+                  <p>Real-time pulse-tracking system for crimping machines, with fatal-error shutdown handlers and secure password verification.</p>
+                  <div class="project-tags">
+                    <span>PHP</span><span>MySQLi</span><span>Cron</span>
+                  </div>
+                  <div class="project-back-links">
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live</a>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 project-item" data-cat="web" data-name="online booking engine" data-aos="fade-up" data-aos-delay="60">
+            <div class="project-card-flip" tabindex="0" role="button" aria-label="Public Online Booking Engine — flip for details">
+              <div class="project-card-inner">
+                <article class="project-card-front">
+                  <div class="project-thumb">
+                    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=800&q=60" alt="Online booking calendar screenshot" loading="lazy" />
+                  </div>
+                  <div class="project-front-body">
+                    <h3>Public Online Booking Engine</h3>
+                    <span class="flip-hint"><i class="fa-solid fa-rotate" aria-hidden="true"></i> Tap to flip</span>
+                  </div>
+                </article>
+                <article class="project-card-back">
+                  <h3>Public Online Booking Engine</h3>
+                  <p>Guest-facing booking flow with a FullCalendar-powered availability grid and image-based receipt uploads.</p>
+                  <div class="project-tags">
+                    <span>PHP</span><span>FullCalendar</span><span>AJAX</span>
+                  </div>
+                  <div class="project-back-links">
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live</a>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 project-item" data-cat="dashboard" data-name="analytics reporting suite" data-aos="fade-up" data-aos-delay="120">
+            <div class="project-card-flip" tabindex="0" role="button" aria-label="Full Operations Report Suite — flip for details">
+              <div class="project-card-inner">
+                <article class="project-card-front">
+                  <div class="project-thumb">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=60" alt="Analytics and reporting dashboard screenshot" loading="lazy" />
+                  </div>
+                  <div class="project-front-body">
+                    <h3>Full Operations Report Suite</h3>
+                    <span class="flip-hint"><i class="fa-solid fa-rotate" aria-hidden="true"></i> Tap to flip</span>
+                  </div>
+                </article>
+                <article class="project-card-back">
+                  <h3>Full Operations Report Suite</h3>
+                  <p>Consolidated operations reporting with async PDF generation, embedded photo evidence, and date-range filtering across all data sources.</p>
+                  <div class="project-tags">
+                    <span>pdfMake</span><span>Chart.js</span><span>PHP</span>
+                  </div>
+                  <div class="project-back-links">
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live</a>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-center mt-4 d-none" id="noResultsMsg">No projects match your search.</p>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE TIMELINE ============ -->
+    <section id="experience" class="section-pad section-alt" aria-label="Work experience">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">04 / Experience</p>
+        <h2 class="section-title" data-aos="fade-up">Where I've built things</h2>
+
+        <div class="timeline mt-5">
+          <div class="timeline-item" data-aos="fade-up">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <span class="timeline-date">2023 — Present</span>
+              <h3>Full Stack Developer</h3>
+              <p class="timeline-company">Laruzzo Resort & Hospitality Group</p>
+              <p>Own the resort management platform end-to-end: bookings, POS, commissary inventory, and the operations reporting suite.</p>
+              <ul>
+                <li>Cut monthly report generation time from hours to minutes with async PDF pipelines.</li>
+                <li>Rebuilt the POS dashboard sales pipeline, eliminating a zero-sales display bug in production.</li>
+                <li>Designed a server-side DataTables filtering layer reused across five modules.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item" data-aos="fade-up">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <span class="timeline-date">2021 — 2023</span>
+              <h3>Software Developer</h3>
+              <p class="timeline-company">REPCO Industrial Systems</p>
+              <p>Maintained and modernized a maintenance management application used by on-site technicians daily.</p>
+              <ul>
+                <li>Diagnosed and fixed a site-wide broken-button defect traced to malformed inline event handlers.</li>
+                <li>Led the "Obsidian Precision" design system overhaul with full light/dark token support.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item" data-aos="fade-up">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <span class="timeline-date">2019 — 2021</span>
+              <h3>Junior Web Developer</h3>
+              <p class="timeline-company">ACM Systems</p>
+              <p>Built and debugged internal monitoring tools for industrial pulse-tracking hardware.</p>
+              <ul>
+                <li>Traced a persistent data-mismatch bug to a single inconsistent column name across queries.</li>
+                <li>Added shutdown handlers and secure password hashing to a legacy authentication flow.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION SECTION ============ -->
+    <section id="education" class="section-pad" aria-label="Education">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">05 / Education</p>
+        <h2 class="section-title" data-aos="fade-up">Academic background</h2>
+
+        <div class="row g-4 mt-3">
+          <div class="col-md-6" data-aos="fade-up">
+            <div class="edu-card">
+              <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+              <div>
+                <h3>B.S. in Computer Engineering</h3>
+                <p class="edu-meta">Asia Technological School of Science and Arts · 2025 — 2026</p>
+                <p>Focused on software architecture, databases, and web systems. Capstone project: a MySQL-backed inventory system with real-time low-stock alerts.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="80">
+            <div class="edu-card">
+              <i class="fa-solid fa-school" aria-hidden="true"></i>
+              <div>
+                <h3>Senior High School, ABM Strand</h3>
+                <p class="edu-meta">Labas Senior Highschool · 2020 — 2021</p>
+                <p>Built first freelance websites during this period, sparking an interest in full-stack development.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CERTIFICATIONS ============ -->
+    <section id="certifications" class="section-pad section-alt" aria-label="Certifications">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">06 / Certifications</p>
+        <h2 class="section-title" data-aos="fade-up">Credentials & badges</h2>
+
+        <div class="row g-4 mt-3">
+          <div class="col-sm-6 col-lg-3" data-aos="zoom-in">
+            <div class="cert-card">
+              <i class="fa-solid fa-certificate" aria-hidden="true"></i>
+              <h3>AWS Certified Cloud Practitioner</h3>
+              <p>Amazon Web Services · 2023</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3" data-aos="zoom-in" data-aos-delay="60">
+            <div class="cert-card">
+              <i class="fa-solid fa-certificate" aria-hidden="true"></i>
+              <h3>PHP Backend Development</h3>
+              <p>Udemy · 2022</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3" data-aos="zoom-in" data-aos-delay="120">
+            <div class="cert-card">
+              <i class="fa-solid fa-certificate" aria-hidden="true"></i>
+              <h3>Responsive Web Design</h3>
+              <p>freeCodeCamp · 2021</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3" data-aos="zoom-in" data-aos-delay="180">
+            <div class="cert-card">
+              <i class="fa-solid fa-certificate" aria-hidden="true"></i>
+              <h3>Database Design Fundamentals</h3>
+              <p>Coursera · 2020</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section id="testimonials" class="section-pad" aria-label="Testimonials">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">07 / Testimonials</p>
+        <h2 class="section-title" data-aos="fade-up">What people say</h2>
+
+        <div class="testimonial-carousel mt-5" data-aos="fade-up">
+          <div class="testimonial-track" id="testimonialTrack">
+            <blockquote class="testimonial-slide active">
+              <p>"Jeniel turned a spreadsheet-driven mess into a real operations dashboard our whole team actually uses."</p>
+              <cite>— Operations Manager, Laruzzo Resort Group</cite>
+            </blockquote>
+            <blockquote class="testimonial-slide">
+              <p>"Calm under pressure and relentless about root causes, not just symptoms. Our production bugs stayed fixed."</p>
+              <cite>— Engineering Lead, REPCO Industrial</cite>
+            </blockquote>
+            <blockquote class="testimonial-slide">
+              <p>"He explains technical tradeoffs in plain language, which made every planning meeting shorter and better."</p>
+              <cite>— Product Owner, ACM Systems</cite>
+            </blockquote>
+          </div>
+          <div class="testimonial-controls">
+            <button id="testimonialPrev" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+            <div class="testimonial-dots" id="testimonialDots"></div>
+            <button id="testimonialNext" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GITHUB CONTRIBUTIONS ============ -->
+    <section id="github" class="section-pad section-alt" aria-label="GitHub activity">
+      <div class="container text-center">
+        <p class="section-eyebrow" data-aos="fade-up">08 / Activity</p>
+        <h2 class="section-title" data-aos="fade-up">Recent GitHub contributions</h2>
+        <div class="github-card mx-auto mt-4" data-aos="zoom-in">
+          <img src="https://ghchart.rshah.org/22d3ee/octocat" alt="GitHub contribution graph" loading="lazy" class="img-fluid" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT SECTION ============ -->
+    <section id="contact" class="section-pad" aria-label="Contact">
+      <div class="container">
+        <p class="section-eyebrow" data-aos="fade-up">09 / Contact</p>
+        <h2 class="section-title" data-aos="fade-up">Let's build something reliable</h2>
+        <p class="section-subtitle" data-aos="fade-up">Open to full-time roles, contract work, and interesting problems.</p>
+
+        <div class="row g-5 mt-2">
+          <div class="col-lg-5" data-aos="fade-right">
+            <ul class="contact-info-list list-unstyled">
+              <li><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:sabalborojeniel427@gmail.com">sabalborojeniel427@gmail.com</a></li>
+              <li><i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:+639171234567">+63 917 123 4567</a></li>
+              <li><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">linkedin.com/in/jenielsabalboro</a></li>
+              <li><i class="fa-brands fa-github" aria-hidden="true"></i><a href="https://github.com/JINIL17" target="_blank" rel="noopener noreferrer">github.com/jenielsabalboro</a></li>
+              <li><i class="fa-brands fa-facebook-f" aria-hidden="true"></i><a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">facebook.com/jenielsabalboro.dev</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-7" data-aos="fade-left">
+            <form id="contactForm" class="contact-form" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="cf-name" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="cf-name" name="name" required minlength="2" />
+                  <div class="invalid-feedback">Please enter your name.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="cf-email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="cf-email" name="email" required />
+                  <div class="invalid-feedback">Please enter a valid email address.</div>
+                </div>
+                <div class="col-12">
+                  <label for="cf-subject" class="form-label">Subject</label>
+                  <input type="text" class="form-control" id="cf-subject" name="subject" required minlength="3" />
+                  <div class="invalid-feedback">Please enter a subject.</div>
+                </div>
+                <div class="col-12">
+                  <label for="cf-message" class="form-label">Message</label>
+                  <textarea class="form-control" id="cf-message" name="message" rows="5" required minlength="10"></textarea>
+                  <div class="invalid-feedback">Message should be at least 10 characters.</div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-glow w-100 w-md-auto" id="contactSubmit">
+                    <span class="btn-label">Send Message</span>
+                    <i class="fa-solid fa-paper-plane ms-2" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gy-4 align-items-center">
+        <div class="col-md-4">
+          <a class="footer-brand" href="#hero"><span class="brand-mark">JS</span><span class="brand-cursor">_</span></a>
+          <p class="footer-tagline">Building resilient systems, one commit at a time.</p>
+        </div>
+        <div class="col-md-4 text-md-center">
+          <ul class="footer-social list-unstyled d-flex gap-3 justify-content-md-center">
+            <li><a href="https://github.com/JINIL17" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
+            <li><a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
+            <li><a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+            <li><a href="mailto:sabalborojeniel427@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 text-md-end">
+          <p class="footer-copy">© <span id="footerYear"></span> Jeniel Sabalboro. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ BACK TO TOP ============ -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- ============ SCRIPTS ============ -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <!-- Lenis: smooth inertia-based scrolling -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <!-- SplitType: splits headings into words/chars for staggered GSAP reveals -->
+  <script src="https://cdn.jsdelivr.net/npm/split-type@latest/umd/index.min.js"></script>
+
+  <script src="js/animation.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

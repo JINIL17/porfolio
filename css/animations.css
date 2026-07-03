@@ -1,0 +1,114 @@
+/* ==========================================================================
+   ETHAN COLE — PORTFOLIO
+   Animations Stylesheet
+   Keyframes + motion-only rules. Kept separate from style.css so animation
+   behavior can be tuned or disabled independently of layout/theme.
+   ========================================================================== */
+
+/* ---------- Loader ---------- */
+@keyframes loaderFill {
+  0%   { width: 0%; }
+  60%  { width: 70%; }
+  100% { width: 100%; }
+}
+
+/* ---------- Blinking caret / cursor ---------- */
+@keyframes blinkCaret {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* ---------- Status dot pulse ---------- */
+@keyframes pulseDot {
+  0%   { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+
+/* ---------- Uptime bar shimmer ---------- */
+@keyframes uptimeGlow {
+  0%   { filter: brightness(0.9); }
+  100% { filter: brightness(1.3); }
+}
+
+/* ---------- Avatar ring spin ---------- */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ---------- Scroll cue ---------- */
+@keyframes scrollCueMove {
+  0%   { transform: scaleY(0.4); opacity: 0.3; transform-origin: top; }
+  50%  { transform: scaleY(1); opacity: 1; transform-origin: top; }
+  100% { transform: scaleY(0.4); opacity: 0.3; transform-origin: bottom; }
+}
+
+/* ---------- Ripple button effect ---------- */
+@keyframes rippleAnim {
+  to { transform: scale(3); opacity: 0; }
+}
+
+/* ---------- Floating card ambient motion ---------- */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+.float-anim { animation: floatY 5s ease-in-out infinite; }
+
+/* ---------- Gentle fade/slide utility classes (used by JS or AOS fallbacks) ---------- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.js-fade-up   { animation: fadeInUp 0.7s var(--ease-out) both; }
+.js-fade-left { animation: fadeInLeft 0.7s var(--ease-out) both; }
+.js-fade-right{ animation: fadeInRight 0.7s var(--ease-out) both; }
+.js-zoom-in   { animation: zoomIn 0.6s var(--ease-out) both; }
+
+/* ---------- Toast slide-in ---------- */
+@keyframes toastSlideIn {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.toast.showing { animation: toastSlideIn 0.4s var(--ease-out) both; }
+
+/* ---------- Skill / stat count pop ---------- */
+@keyframes counterPop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+.counter.pop { animation: counterPop 0.3s ease-out; }
+
+/* ---------- Tilt card base (JS drives rotateX/rotateY via inline transform) ---------- */
+.tilt-card {
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
+  will-change: transform;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .avatar-ring, .status-dot, .scroll-cue-line, .brand-cursor, .typed-caret {
+    animation: none !important;
+  }
+}

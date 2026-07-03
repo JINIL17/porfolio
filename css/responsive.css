@@ -1,0 +1,80 @@
+/* ==========================================================================
+   ETHAN COLE — PORTFOLIO
+   Responsive Stylesheet
+   Breakpoints follow Bootstrap 5 conventions:
+   xl <1200px · lg <992px · md <768px · sm <576px
+   ========================================================================== */
+
+/* ---------- Large desktops / laptops ---------- */
+@media (max-width: 1199.98px) {
+  .section-pad { padding: 6rem 0; }
+  .console-card { max-width: 420px; margin: 0 auto; }
+}
+
+/* ---------- Tablets (navbar collapses here) ---------- */
+@media (max-width: 991.98px) {
+  .section-pad { padding: 5rem 0; }
+
+  .custom-navbar .navbar-collapse {
+    background: var(--bg-1);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    margin-top: 1rem;
+    padding: 1rem 1.2rem;
+    box-shadow: var(--shadow-card);
+  }
+  .nav-link::after { display: none; }
+  .navbar-nav { gap: 0.25rem; }
+  .theme-toggle { margin: 0.5rem 0; }
+
+  .hero-section { min-height: auto; padding-top: calc(var(--nav-height) + 2rem); padding-bottom: 4rem; }
+  .hero-name { font-size: clamp(2.2rem, 8vw, 3.4rem); }
+  .console-card { max-width: 460px; margin: 2rem auto 0; }
+
+  .timeline { padding-left: 2rem; }
+  .timeline-dot { left: -2rem; }
+}
+
+/* ---------- Small tablets / large phones ---------- */
+@media (max-width: 767.98px) {
+  .section-title { font-size: 1.7rem; }
+  .about-photo-tag { left: 10px; bottom: -14px; font-size: 0.7rem; padding: 0.45rem 0.8rem; }
+
+  .stack-tabs, .project-filters { justify-content: center; }
+  .project-search { width: 100%; margin-top: 0.5rem; }
+  .project-search input { width: 100%; min-width: 0; }
+
+  .console-metrics { flex-wrap: wrap; row-gap: 1rem; }
+  .metric { flex: 1 1 45%; }
+
+  .testimonial-slide p { font-size: 1.1rem; }
+
+  .back-to-top { bottom: 1.2rem; right: 1.2rem; width: 44px; height: 44px; }
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 575.98px) {
+  :root { --nav-height: 68px; }
+
+  .section-pad { padding: 3.5rem 0; }
+  .hero-name { font-size: 2.1rem; }
+  .hero-role { font-size: 1rem; }
+  .hero-typed-line { font-size: 0.92rem; }
+  .hero-cta .btn-glow, .hero-cta .btn-outline-console { width: 100%; text-align: center; }
+  .hero-cta { flex-direction: column; }
+
+  .console-card { max-width: 100%; }
+  .console-header { padding: 0.7rem 0.9rem; }
+  .avatar-frame, .avatar-frame img { width: 110px; height: 110px; }
+
+  .edu-card { flex-direction: column; text-align: center; }
+  .edu-card i { margin: 0 auto; }
+
+  .contact-info-list li { font-size: 0.82rem; }
+  .contact-info-list i { width: 36px; height: 36px; font-size: 0.85rem; }
+
+  .site-footer .col-md-4 { text-align: center !important; }
+  .footer-social { justify-content: center !important; margin-top: 1rem; }
+
+  #radarChart { width: 100%; height: auto; }
+}
