@@ -283,6 +283,9 @@
      7. LIGHTWEIGHT PARTICLE BACKGROUND (Canvas, no external dependency)
      Drawn on #particlesCanvas within the hero section — small drifting
      nodes connected by faint lines, evoking a "network/system" feel.
+     This is the FALLBACK path — initHeroBackground() below tries the
+     Three.js WebGL version first and only calls this if that's unavailable
+     or unsuitable for the current device.
   --------------------------------------------------------------------- */
   function initParticles() {
     const canvas = document.getElementById("particlesCanvas");
@@ -353,7 +356,138 @@
   }
 
   /* ---------------------------------------------------------------------
-     7b. LENIS SMOOTH SCROLL
+     7a. WEBGL PARTICLE FIELD (Three.js) — the "maximized" hero background.
+     Real depth: points sit at varying Z, drift slowly, and parallax with
+     the cursor. Deliberately gated off on small phones and reduced-motion
+     so it never becomes the thing that makes the site feel slow — the 2D
+     canvas above is always there to catch it if this can't run.
+     Returns true if it actually started, so the caller knows whether it
+     still needs the 2D fallback.
+  --------------------------------------------------------------------- */
+  function initThreeParticles() {
+    if (typeof THREE === "undefined" || prefersReducedMotion) return false;
+    if (window.matchMedia("(max-width: 575.98px)").matches) return false;
+
+    const hero = document.getElementById("hero");
+    const mount = document.getElementById("heroWebGL");
+    if (!hero || !mount) return false;
+
+    let width = hero.offsetWidth;
+    let height = hero.offsetHeight;
+    if (!width || !height) return false;
+
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    } catch (err) {
+      return false; // WebGL unsupported/blocked — let the 2D canvas handle it
+    }
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, width / height, 1, 2000);
+    camera.position.z = 600;
+
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setSize(width, height);
+    mount.appendChild(renderer.domElement);
+
+    // Point cloud: colored between the site's violet and cyan accents,
+    // spread across a real 3D volume so depth is visible, not just implied.
+    const count = 220;
+    const positions = new Float32Array(count * 3);
+    const colors = new Float32Array(count * 3);
+    const cyan = new THREE.Color(0x22d3ee);
+    const violet = new THREE.Color(0x7c5cff);
+
+    for (let i = 0; i < count; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 1400;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 900;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 700;
+
+      const mixed = cyan.clone().lerp(violet, Math.random());
+      colors[i * 3] = mixed.r;
+      colors[i * 3 + 1] = mixed.g;
+      colors[i * 3 + 2] = mixed.b;
+    }
+
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+
+    const material = new THREE.PointsMaterial({
+      size: 4,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.8,
+      depthWrite: false,
+    });
+
+    const points = new THREE.Points(geometry, material);
+    scene.add(points);
+
+    // Faint connecting lines between nearby-in-index points — echoes the
+    // "network" feel of the 2D fallback, now with real depth behind it.
+    const lineMaterial = new THREE.LineBasicMaterial({
+      color: 0x7c5cff,
+      transparent: true,
+      opacity: 0.12,
+    });
+    const linePositions = [];
+    for (let i = 0; i < count; i += 4) {
+      const j = (i + 1 + Math.floor(Math.random() * 5)) % count;
+      linePositions.push(positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2]);
+      linePositions.push(positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]);
+    }
+    const lineGeometry = new THREE.BufferGeometry();
+    lineGeometry.setAttribute("position", new THREE.Float32BufferAttribute(linePositions, 3));
+    const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+    scene.add(lines);
+
+    // Cursor-driven parallax: rotation target follows the mouse, eased in
+    // every frame (same lerp approach as the card tilt) so it settles
+    // smoothly instead of snapping.
+    let targetRotY = 0;
+    let targetRotX = 0;
+    window.addEventListener("mousemove", (e) => {
+      targetRotY = (e.clientX / window.innerWidth - 0.5) * 0.4;
+      targetRotX = (e.clientY / window.innerHeight - 0.5) * 0.2;
+    });
+
+    let rafId;
+    function animate() {
+      points.rotation.y += (targetRotY - points.rotation.y) * 0.02 + 0.0005;
+      points.rotation.x += (targetRotX - points.rotation.x) * 0.02;
+      lines.rotation.copy(points.rotation);
+      renderer.render(scene, camera);
+      rafId = requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener("resize", () => {
+      width = hero.offsetWidth;
+      height = hero.offsetHeight;
+      if (!width || !height) return;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    });
+
+    return true;
+  }
+
+  /* ---------------------------------------------------------------------
+     7b. HERO BACKGROUND DISPATCHER
+     Tries the WebGL version first; only falls back to the lightweight 2D
+     canvas if Three.js isn't available, WebGL is unsupported, the screen
+     is a small phone, or reduced-motion is set.
+  --------------------------------------------------------------------- */
+  function initHeroBackground() {
+    const usedWebGL = initThreeParticles();
+    if (!usedWebGL) initParticles();
+  }
+
+  /* ---------------------------------------------------------------------
+     7c. LENIS SMOOTH SCROLL
      Replaces native scroll physics with an inertia-based smooth scroll,
      kept in sync with GSAP's ScrollTrigger (which drives the section-reveal
      and parallax animations) so scroll-linked animations stay accurate.
@@ -408,7 +542,7 @@
     initCustomCursor();
     initTiltEffect();
     initRippleButtons();
-    initParticles();
+    initHeroBackground();
   });
 
   // Expose a couple of helpers for script.js to reuse if needed

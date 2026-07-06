@@ -399,6 +399,8 @@ html[data-theme="light"] .theme-toggle-thumb { transform: translateX(24px); }
   opacity: 0.6;
 }
 #particlesCanvas { position: absolute; inset: 0; z-index: 0; }
+.hero-webgl { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.hero-webgl canvas { display: block; width: 100% !important; height: 100% !important; }
 
 .eyebrow {
   font-family: var(--font-mono);
@@ -853,6 +855,12 @@ html[data-theme="light"] .theme-toggle-thumb { transform: translateX(24px); }
   max-width: 900px;
   overflow-x: auto;
 }
+.github-chart-fallback {
+  padding: 2.5rem 1rem;
+  text-align: center;
+}
+.github-chart-fallback i { font-size: 2.2rem; color: var(--accent-cyan); margin-bottom: 1rem; display: block; }
+.github-chart-fallback p { color: var(--text-2); margin-bottom: 1.2rem; }
 
 /* ---------- 16. CONTACT ---------- */
 .contact-info-list li {

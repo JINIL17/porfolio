@@ -47,7 +47,7 @@
     "url": "https://jenielsabalboro.dev/",
     "image": "https://jenielsabalboro.dev/assets/images/jeniel.png",
     "sameAs": [
-      "https://github.com/JINIL17",
+      "https://github.com/jenielsabalboro",
       "https://linkedin.com/in/jenielsabalboro",
       "https://facebook.com/jenielsabalboro.dev"
     ],
@@ -130,6 +130,7 @@
     <section id="hero" class="hero-section" aria-label="Introduction">
       <div class="hero-grid-bg" aria-hidden="true"></div>
       <canvas id="particlesCanvas" aria-hidden="true"></canvas>
+      <div id="heroWebGL" class="hero-webgl" aria-hidden="true"></div>
       <div class="container position-relative">
         <div class="row align-items-center gy-5">
           <div class="col-lg-7">
@@ -155,10 +156,10 @@
               <a href="#contact" class="btn btn-outline-console">Get In Touch</a>
             </div>
             <ul class="social-row list-unstyled d-flex gap-3 mt-4" data-aos="fade-up" data-aos-delay="320">
-              <li><a href="https://github.com/JINIL17" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
+              <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
               <li><a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
               <li><a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
-              <li><a href="mailto:sabalborojeniel427@gmail.com" aria-label="Send an email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a></li>
+              <li><a href="mailto:hello@jenielsabalboro.dev" aria-label="Send an email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a></li>
             </ul>
           </div>
 
@@ -805,7 +806,22 @@
         <p class="section-eyebrow" data-aos="fade-up">08 / Activity</p>
         <h2 class="section-title" data-aos="fade-up">Recent GitHub contributions</h2>
         <div class="github-card mx-auto mt-4" data-aos="zoom-in">
-          <img src="https://ghchart.rshah.org/22d3ee/octocat" alt="GitHub contribution graph" loading="lazy" class="img-fluid" />
+          <!-- Replace YOUR-GITHUB-USERNAME below with your real GitHub username -->
+          <img
+            src="https://ghchart.rshah.org/22d3ee/YOUR-GITHUB-USERNAME"
+            alt="GitHub contribution graph for YOUR-GITHUB-USERNAME"
+            loading="lazy"
+            class="img-fluid"
+            id="githubChartImg"
+            onerror="this.classList.add('d-none'); document.getElementById('githubChartFallback').classList.remove('d-none'); this.onerror=null;"
+          />
+          <div id="githubChartFallback" class="github-chart-fallback d-none">
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+            <p>Live contribution graph unavailable right now.</p>
+            <a href="https://github.com/YOUR-GITHUB-USERNAME" target="_blank" rel="noopener noreferrer" class="btn btn-console btn-sm">
+              View GitHub Profile
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -820,10 +836,10 @@
         <div class="row g-5 mt-2">
           <div class="col-lg-5" data-aos="fade-right">
             <ul class="contact-info-list list-unstyled">
-              <li><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:sabalborojeniel427@gmail.com">sabalborojeniel427@gmail.com</a></li>
+              <li><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:hello@jenielsabalboro.dev">hello@jenielsabalboro.dev</a></li>
               <li><i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:+639171234567">+63 917 123 4567</a></li>
               <li><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">linkedin.com/in/jenielsabalboro</a></li>
-              <li><i class="fa-brands fa-github" aria-hidden="true"></i><a href="https://github.com/JINIL17" target="_blank" rel="noopener noreferrer">github.com/jenielsabalboro</a></li>
+              <li><i class="fa-brands fa-github" aria-hidden="true"></i><a href="https://github.com/" target="_blank" rel="noopener noreferrer">github.com/jenielsabalboro</a></li>
               <li><i class="fa-brands fa-facebook-f" aria-hidden="true"></i><a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">facebook.com/jenielsabalboro.dev</a></li>
             </ul>
           </div>
@@ -875,10 +891,10 @@
         </div>
         <div class="col-md-4 text-md-center">
           <ul class="footer-social list-unstyled d-flex gap-3 justify-content-md-center">
-            <li><a href="https://github.com/JINIL17" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
+            <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
             <li><a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
             <li><a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
-            <li><a href="mailto:sabalborojeniel427@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a></li>
+            <li><a href="mailto:hello@jenielsabalboro.dev" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a></li>
           </ul>
         </div>
         <div class="col-md-4 text-md-end">
@@ -903,6 +919,10 @@
   <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
   <!-- SplitType: splits headings into words/chars for staggered GSAP reveals -->
   <script src="https://cdn.jsdelivr.net/npm/split-type@latest/umd/index.min.js"></script>
+  <!-- Three.js: WebGL particle field for the hero background (desktop only;
+       falls back to the lightweight 2D canvas below on mobile/low-power
+       devices or if this fails to load) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <script src="js/animation.js"></script>
   <script src="js/script.js"></script>
